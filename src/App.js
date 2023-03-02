@@ -1,8 +1,9 @@
+import "./index.css";
 import React, { Component } from "react";
 
 class App extends Component {
   render() {
-    return <div>Hello World</div>;
+    return <div className="text-2xl">Hello World</div>;
   }
 }
 
