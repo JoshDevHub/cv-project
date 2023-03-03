@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import Button from "./Button";
+
 class GeneralInfoForm extends Component {
   constructor(props) {
     super(props)
@@ -18,7 +20,8 @@ class GeneralInfoForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="flex flex-col items-center">
+        <h2 className="text-2xl font-bold mb-2">Edit Info</h2>
         <form onSubmit={this.props.handleSubmit} className="flex flex-col gap-4 mx-4">
           <div className="flex flex-col">
             <label htmlFor="name">Name</label>
@@ -28,6 +31,7 @@ class GeneralInfoForm extends Component {
               name="name"
               id="name"
               onChange={this.handleChange}
+              className="border rounded-md px-2 py-1"
             />
           </div>
           <div className="flex flex-col">
@@ -37,7 +41,9 @@ class GeneralInfoForm extends Component {
               value={this.state.phoneNumber}
               name="phoneNumber"
               id="phoneNumber"
-              onChange={this.handleChange}/>
+              onChange={this.handleChange}
+              className="border rounded-md px-2 py-1"
+            />
           </div>
           <div className="flex flex-col">
             <label htmlFor="email">Email</label>
@@ -46,7 +52,9 @@ class GeneralInfoForm extends Component {
               value={this.state.email}
               name="email"
               id="email"
-              onChange={this.handleChange}/>
+              onChange={this.handleChange}
+              className="border rounded-md px-2 py-1"
+            />
           </div>
           <div className="flex flex-col">
             <label htmlFor="address">Address</label>
@@ -55,9 +63,11 @@ class GeneralInfoForm extends Component {
               value={this.state.address}
               id="address"
               name="address"
-              onChange={this.handleChange}/>
+              onChange={this.handleChange}
+              className="border rounded-md px-2 py-1"
+            />
           </div>
-          <button type="submit">Add Information</button>
+          <Button type="submit" text="Add Information" />
         </form>
       </div>
     )
