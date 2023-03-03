@@ -24,11 +24,16 @@ class App extends Component {
     return this.state.formComponent === FORM_STATES[state];
   }
 
-  handleOpenFormClick = (event) => {
-    const componentIdentifier = event.target.getAttribute("data-component");
-    this.setState({
-      formComponent: FORM_STATES[componentIdentifier]
-    })
+  handleOpenFormClick = (identifier) => {
+    return () => {
+      this.setState({
+        formComponent: FORM_STATES[identifier]
+      })
+    }
+    /* const componentIdentifier = event.target.getAttribute("data-component"); */
+    /* this.setState({ */
+    /*   formComponent: FORM_STATES[componentIdentifier] */
+    /* }) */
   }
 
   onSubmitInfo = (event) => {
@@ -48,7 +53,7 @@ class App extends Component {
       <div>
         {this.isFormFor("Info")
           ? <GeneralInfoForm info={genInfo} handleSubmit={this.onSubmitInfo} />
-          : <GeneralInfo info={genInfo} clickHandler={this.handleOpenFormClick} />
+          : <GeneralInfo info={genInfo} clickHandler={this.handleOpenFormClick("Info")} />
         }
       </div>
     )

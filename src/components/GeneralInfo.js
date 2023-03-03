@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import Button from "./Button";
+
 import { isEmpty } from "../utils/object_helpers";
 
 class GeneralInfo extends Component {
@@ -8,7 +10,6 @@ class GeneralInfo extends Component {
       <button
         className="border border-black"
         onClick={this.props.clickHandler}
-        data-component="Info"
       >
         {text}
       </button>
@@ -33,7 +34,7 @@ class GeneralInfo extends Component {
         <p>City: {address}</p>
         <p>Email: {email}</p>
         <p>Phone: {phoneNumber}</p>
-        {this.createButton("Edit your info")}
+        <Button type="button" handler={this.props.clickHandler} text="Add your info" />
       </div>
     )
   }
