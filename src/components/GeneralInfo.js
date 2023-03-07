@@ -30,11 +30,16 @@ class GeneralInfo extends Component {
 
     return (
       <div>
-        <p>Name: {name}</p>
-        <p>City: {address}</p>
-        <p>Email: {email}</p>
-        <p>Phone: {phoneNumber}</p>
-        <Button type="button" handler={this.props.clickHandler} text="Add your info" />
+        <div className="p-4 border-b-2 border-black">
+          <h2 className="text-2xl font-bold text-sky-800">{name}</h2>
+          <h3 className="text-xl text-gray-700">{jobTitle}</h3>
+          <Button type="button" handler={this.props.clickHandler} text="Edit Info" />
+        </div>
+        <div className="p-4 border-b-2 border-black">
+          <p>City: {address}</p>
+          <p>Email: {email}</p>
+          <p>Phone: {phoneNumber}</p>
+        </div>
       </div>
     )
   }
