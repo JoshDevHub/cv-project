@@ -3,6 +3,10 @@ import React, { Component } from "react";
 
 import GeneralInfo from "./components/GeneralInfo";
 import GeneralInfoForm from "./components/GeneralInfoForm";
+import Skills from "./components/Skills";
+import SkillForm from "./components/SkillForm";
+
+import Button from "./components/Button";
 
 import FORM_STATES from "./utils/form_states";
 
@@ -16,6 +20,7 @@ class App extends Component {
 
     this.state = {
       genInfo: GeneralInfoModel(),
+      skills: [],
       formComponent: FORM_STATES.None,
     }
   }
@@ -32,6 +37,12 @@ class App extends Component {
     }
   }
 
+  handleCloseFormClick = () => {
+    this.setState({
+      formComponent: FORM_STATES.None
+    })
+  }
+
   onSubmitInfo = (event) => {
     event.preventDefault();
 
@@ -42,14 +53,25 @@ class App extends Component {
     })
   }
 
+  addSkill = (skill) => {
+    this.setState({
+      skills: [...this.state.skills, skill]
+    })
+  }
+
   render() {
-    const { genInfo } = this.state
+    const { genInfo, skills } = this.state
 
     return (
       <div>
         {this.isFormFor("Info")
           ? <GeneralInfoForm info={genInfo} handleSubmit={this.onSubmitInfo} />
           : <GeneralInfo info={genInfo} clickHandler={this.handleOpenFormClick("Info")} />
+        }
+        <Skills skills={skills} />
+        {this.isFormFor("Skills")
+          ? <SkillForm skills={skills} closeHandler={this.handleCloseFormClick} callback={this.addSkill} />
+          : <Button handler={this.handleOpenFormClick("Skills")} text="Add Skills" type="button" />
         }
       </div>
     )
