@@ -34,6 +34,15 @@ class GeneralInfoForm extends Component {
             />
           </div>
           <div className="flex flex-col">
+            <label htmlFor="jobTitle">Title</label>
+            <Input
+              type="text"
+              value={this.state.jobTitle}
+              id="jobTitle"
+              handler={this.handleChange}
+            />
+          </div>
+          <div className="flex flex-col">
             <label htmlFor="phoneNumber">Phone Number</label>
             <Input
               type="text"

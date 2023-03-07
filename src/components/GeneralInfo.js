@@ -26,7 +26,7 @@ class GeneralInfo extends Component {
       )
     }
 
-    const { name, address, email, phoneNumber } = this.props.info;
+    const { name, address, email, phoneNumber, jobTitle } = this.props.info;
 
     return (
       <div>
