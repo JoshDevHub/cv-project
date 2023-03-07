@@ -30,10 +30,6 @@ class App extends Component {
         formComponent: FORM_STATES[identifier]
       })
     }
-    /* const componentIdentifier = event.target.getAttribute("data-component"); */
-    /* this.setState({ */
-    /*   formComponent: FORM_STATES[componentIdentifier] */
-    /* }) */
   }
 
   onSubmitInfo = (event) => {
