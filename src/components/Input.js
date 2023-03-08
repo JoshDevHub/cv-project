@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Input extends Component {
   render() {
-    const { type, handler, id, value } = this.props
+    const { type, handler, id, value } = this.props;
 
     return (
       <input
@@ -11,10 +11,10 @@ class Input extends Component {
         name={id}
         id={id}
         onChange={handler}
-        className="border rounded-md px-2 py-1"
+        className="rounded-md border px-2 py-1"
       />
-    )
+    );
   }
 }
 
-export default Input
+export default Input;

@@ -2,14 +2,14 @@ import React, { Component } from "react";
 
 class Skills extends Component {
   render() {
-    const { skills } = this.props
+    const { skills } = this.props;
 
     if (skills.length === 0) {
       return (
         <div>
           <p>You haven't added any skills yet</p>
         </div>
-      )
+      );
     }
 
     return (
@@ -20,7 +20,7 @@ class Skills extends Component {
           })}
         </ul>
       </div>
-    )
+    );
   }
 }
 

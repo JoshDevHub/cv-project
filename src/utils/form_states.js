@@ -4,6 +4,6 @@ const FORM_STATES = Object.freeze({
   Skills: "skills",
   Education: "education",
   Work: "work",
-})
+});
 
-export default FORM_STATES
+export default FORM_STATES;

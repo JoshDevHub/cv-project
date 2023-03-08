@@ -22,7 +22,7 @@ class App extends Component {
       genInfo: GeneralInfoModel(),
       skills: [],
       formComponent: FORM_STATES.None,
-    }
+    };
   }
 
   isFormFor(state) {
@@ -32,16 +32,16 @@ class App extends Component {
   handleOpenFormClick = (identifier) => {
     return () => {
       this.setState({
-        formComponent: FORM_STATES[identifier]
-      })
-    }
-  }
+        formComponent: FORM_STATES[identifier],
+      });
+    };
+  };
 
   handleCloseFormClick = () => {
     this.setState({
-      formComponent: FORM_STATES.None
-    })
-  }
+      formComponent: FORM_STATES.None,
+    });
+  };
 
   onSubmitInfo = (event) => {
     event.preventDefault();
@@ -49,32 +49,45 @@ class App extends Component {
     const data = objFromForm(event.target);
     this.setState({
       genInfo: GeneralInfoModel(data),
-      formComponent: FORM_STATES.None
-    })
-  }
+      formComponent: FORM_STATES.None,
+    });
+  };
 
   addSkill = (skill) => {
     this.setState({
-      skills: [...this.state.skills, skill]
-    })
-  }
+      skills: [...this.state.skills, skill],
+    });
+  };
 
   render() {
-    const { genInfo, skills } = this.state
+    const { genInfo, skills } = this.state;
 
     return (
       <div>
-        {this.isFormFor("Info")
-          ? <GeneralInfoForm info={genInfo} handleSubmit={this.onSubmitInfo} />
-          : <GeneralInfo info={genInfo} clickHandler={this.handleOpenFormClick("Info")} />
-        }
+        {this.isFormFor("Info") ? (
+          <GeneralInfoForm info={genInfo} handleSubmit={this.onSubmitInfo} />
+        ) : (
+          <GeneralInfo
+            info={genInfo}
+            clickHandler={this.handleOpenFormClick("Info")}
+          />
+        )}
         <Skills skills={skills} />
-        {this.isFormFor("Skills")
-          ? <SkillForm skills={skills} closeHandler={this.handleCloseFormClick} callback={this.addSkill} />
-          : <Button handler={this.handleOpenFormClick("Skills")} text="Add Skills" type="button" />
-        }
+        {this.isFormFor("Skills") ? (
+          <SkillForm
+            skills={skills}
+            closeHandler={this.handleCloseFormClick}
+            callback={this.addSkill}
+          />
+        ) : (
+          <Button
+            handler={this.handleOpenFormClick("Skills")}
+            text="Add Skills"
+            type="button"
+          />
+        )}
       </div>
-    )
+    );
   }
 }
 

@@ -14,32 +14,32 @@ class SkillForm extends Component {
         id: uniqid(),
         text: "",
       },
-    }
+    };
   }
 
   onSubmit = (event) => {
     event.preventDefault();
 
-    this.props.callback(this.state.skill)
+    this.props.callback(this.state.skill);
     this.setState({
       skill: {
         text: "",
         id: uniqid(),
-      }
-    })
-  }
+      },
+    });
+  };
 
   handleChange = (event) => {
     this.setState({
       skill: {
         text: event.target.value,
         id: this.state.skill.id,
-      }
-    })
-  }
+      },
+    });
+  };
 
   render() {
-    const { text } = this.state.skill
+    const { text } = this.state.skill;
 
     return (
       <form onSubmit={this.onSubmit}>
@@ -53,7 +53,7 @@ class SkillForm extends Component {
         <Button type="submit" text="Add Skill" />
         <Button type="button" text="Close" handler={this.props.closeHandler} />
       </form>
-    )
+    );
   }
 }
 

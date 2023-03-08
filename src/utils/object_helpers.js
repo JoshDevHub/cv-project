@@ -3,13 +3,13 @@ export const objectWithDefault = (defaultValue) => {
     return Object.keys(obj).reduce((defObj, key) => {
       defObj[key] = obj[key] ?? defaultValue;
       return defObj;
-    }, {})
-  }
-}
+    }, {});
+  };
+};
 
 export const isEmpty = (obj) => {
   return Object.values(obj).every((v) => !v);
-}
+};
 
 export const objFromForm = (form) => {
   const formData = new FormData(form);
@@ -19,4 +19,4 @@ export const objFromForm = (form) => {
     object[key] = value;
   }
   return object;
-}
+};

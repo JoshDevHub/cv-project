@@ -5,25 +5,28 @@ import Input from "./Input";
 
 class GeneralInfoForm extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
-      ...this.props.info
-    }
+      ...this.props.info,
+    };
   }
 
   handleChange = (event) => {
     const { id, value } = event.target;
     this.setState({
-      [id]: value
-    })
-  }
+      [id]: value,
+    });
+  };
 
   render() {
     return (
       <div className="flex flex-col items-center">
-        <h2 className="text-2xl font-bold mb-2">Edit Info</h2>
-        <form onSubmit={this.props.handleSubmit} className="flex flex-col gap-4 mx-4">
+        <h2 className="mb-2 text-2xl font-bold">Edit Info</h2>
+        <form
+          onSubmit={this.props.handleSubmit}
+          className="mx-4 flex flex-col gap-4"
+        >
           <div className="flex flex-col">
             <label htmlFor="name">Name</label>
             <Input
@@ -72,7 +75,7 @@ class GeneralInfoForm extends Component {
           <Button type="submit" text="Add Information" />
         </form>
       </div>
-    )
+    );
   }
 }
 

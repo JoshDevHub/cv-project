@@ -10,10 +10,12 @@ class Button extends Component {
         onClick={handler}
         {...(handler && { onClick: handler })}
         value={value ?? ""}
+        className="rounded-md border-2 border-sky-800 bg-sky-800 p-1 font-bold
+                   text-white hover:bg-transparent hover:text-sky-800"
       >
         {text}
       </button>
-    )
+    );
   }
 }
 
