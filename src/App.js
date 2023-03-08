@@ -63,29 +63,31 @@ class App extends Component {
     const { genInfo, skills } = this.state;
 
     return (
-      <div>
-        {this.isFormFor("Info") ? (
-          <GeneralInfoForm info={genInfo} handleSubmit={this.onSubmitInfo} />
-        ) : (
-          <GeneralInfo
-            info={genInfo}
-            clickHandler={this.handleOpenFormClick("Info")}
-          />
-        )}
-        <Skills skills={skills} />
-        {this.isFormFor("Skills") ? (
-          <SkillForm
-            skills={skills}
-            closeHandler={this.handleCloseFormClick}
-            callback={this.addSkill}
-          />
-        ) : (
-          <Button
-            handler={this.handleOpenFormClick("Skills")}
-            text="Add Skills"
-            type="button"
-          />
-        )}
+      <div className="min-h-screen bg-slate-900 py-8">
+        <div className="mx-auto max-w-4xl bg-white">
+          {this.isFormFor("Info") ? (
+            <GeneralInfoForm info={genInfo} handleSubmit={this.onSubmitInfo} />
+          ) : (
+            <GeneralInfo
+              info={genInfo}
+              clickHandler={this.handleOpenFormClick("Info")}
+            />
+          )}
+          <Skills skills={skills} />
+          {this.isFormFor("Skills") ? (
+            <SkillForm
+              skills={skills}
+              closeHandler={this.handleCloseFormClick}
+              callback={this.addSkill}
+            />
+          ) : (
+            <Button
+              handler={this.handleOpenFormClick("Skills")}
+              text="Add Skills"
+              type="button"
+            />
+          )}
+        </div>
       </div>
     );
   }
