@@ -22,8 +22,6 @@ class GeneralInformation extends Component {
   }
 
   showForm = () => {
-    console.log("happens");
-
     this.setState({
       showForm: true,
     });

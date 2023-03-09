@@ -10,8 +10,10 @@ class GeneralInfoDisplay extends Component {
   render() {
     if (this.isEmpty()) {
       return (
-        <div>
-          <p>You haven't filled out this information yet</p>
+        <div className="px-8 py-4">
+          <p>
+            You haven't filled out your general information yet information yet
+          </p>
           <Button
             type="button"
             handler={this.props.clickHandler}
