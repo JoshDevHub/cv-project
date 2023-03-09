@@ -54,8 +54,14 @@ class WorkForm extends Component {
             handler={this.props.handleChange}
           />
         </div>
-        <div>
+        <div className="flex gap-4">
           <Button type="submit" text="Add Experience" />
+          <Button
+            type="button"
+            text="Cancel"
+            styles="alert"
+            handler={this.props.closeForm}
+          />
         </div>
       </form>
     );
