@@ -52,7 +52,6 @@ class WorkExperience extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state);
 
     this.setState({
       experiences: [...this.state.experiences, this.state.workExperience],

@@ -2,8 +2,6 @@ import React, { Component } from "react";
 
 class Work extends Component {
   render() {
-    console.log(this.props);
-
     const { id, startDate, endDate, jobTitle, companyName, responsibilities } =
       this.props.data;
 

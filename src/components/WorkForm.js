@@ -14,7 +14,7 @@ class WorkForm extends Component {
         className="grid grid-cols-3 gap-y-2 gap-x-8"
       >
         <div className="col-span-2 flex flex-col gap-0.5">
-          <label htmlFor="compnayName">Company Name</label>
+          <label htmlFor="companyName">Company Name</label>
           <Input
             type="text"
             id="companyName"
