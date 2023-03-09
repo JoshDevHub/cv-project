@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import Header from "./components/Header";
 import GeneralInformation from "./components/GeneralInformation";
 import Skills from "./components/Skills";
+import WorkExperience from "./components/WorkExperience";
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
         <div className="mx-auto max-w-4xl rounded-xl bg-white">
           <GeneralInformation />
           <Skills />
+          <WorkExperience />
         </div>
       </div>
     );
