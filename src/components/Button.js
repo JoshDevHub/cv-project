@@ -16,7 +16,7 @@ class Button extends Component {
         onClick={handler}
         {...(handler && { onClick: handler })}
         value={value ?? ""}
-        className={`rounded-md border-2 p-1 font-bold text-white
+        className={`rounded-md border-2 p-1 font-bold text-white transition
                    hover:bg-transparent ${colors}`}
       >
         {text}
