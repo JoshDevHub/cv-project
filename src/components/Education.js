@@ -61,8 +61,8 @@ class Education extends Component {
 
     return (
       <ul>
-        {this.state.experiences.map((experience) => {
-          return <EducationItem data={experience} />;
+        {this.state.experiences.map(({ id, ...experience }) => {
+          return <EducationItem key={id} data={experience} />;
         })}
       </ul>
     );

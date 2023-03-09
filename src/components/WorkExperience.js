@@ -61,8 +61,8 @@ class WorkExperience extends Component {
 
     return (
       <ul>
-        {this.state.experiences.map((experience) => {
-          return <Work data={experience} />;
+        {this.state.experiences.map(({ id, ...experience }) => {
+          return <Work key={id} data={experience} />;
         })}
       </ul>
     );
