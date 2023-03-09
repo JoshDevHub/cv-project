@@ -5,8 +5,6 @@ import Input from "./Input";
 
 class EducationForm extends Component {
   render() {
-    console.log(this.props);
-
     const { startDate, endDate, degree, institution, didGraduate } =
       this.props.education;
 

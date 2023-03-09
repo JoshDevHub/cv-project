@@ -28,15 +28,9 @@ class Education extends Component {
     };
   }
 
-  openForm = () => {
+  toggleForm = () => {
     this.setState({
-      showForm: true,
-    });
-  };
-
-  closeForm = () => {
-    this.setState({
-      showForm: false,
+      showForm: !this.state.showForm,
     });
   };
 
@@ -58,7 +52,6 @@ class Education extends Component {
       education: EmptyEducationItem(),
       showForm: false,
     });
-    console.log(this.state);
   };
 
   listExperiences() {
@@ -85,10 +78,10 @@ class Education extends Component {
             education={this.state.education}
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
-            closeForm={this.closeForm}
+            closeForm={this.toggleForm}
           />
         ) : (
-          <Button type="button" text="Add Work" handler={this.openForm} />
+          <Button type="button" text="Add Work" handler={this.toggleForm} />
         )}
       </div>
     );
