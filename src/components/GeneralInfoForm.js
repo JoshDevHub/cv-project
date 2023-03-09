@@ -64,11 +64,11 @@ class GeneralInfoForm extends Component {
             />
           </div>
           <div className="flex flex-col">
-            <label htmlFor="address">Address</label>
+            <label htmlFor="city">City</label>
             <Input
               type="text"
-              value={this.state.address}
-              id="address"
+              value={this.state.city}
+              id="city"
               handler={this.handleChange}
             />
           </div>

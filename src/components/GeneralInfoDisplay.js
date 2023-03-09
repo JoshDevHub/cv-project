@@ -2,11 +2,13 @@ import React, { Component } from "react";
 
 import Button from "./Button";
 
-import { isEmpty } from "../utils/object_helpers";
+class GeneralInfoDisplay extends Component {
+  isEmpty() {
+    return Object.values(this.props.info).every((field) => field === "");
+  }
 
-class GeneralInfo extends Component {
   render() {
-    if (isEmpty(this.props.info)) {
+    if (this.isEmpty()) {
       return (
         <div>
           <p>You haven't filled out this information yet</p>
@@ -19,7 +21,7 @@ class GeneralInfo extends Component {
       );
     }
 
-    const { name, address, email, phoneNumber, jobTitle } = this.props.info;
+    const { name, city, email, phoneNumber, jobTitle } = this.props.info;
 
     return (
       <div>
@@ -33,7 +35,7 @@ class GeneralInfo extends Component {
           />
         </div>
         <div className="border-b-2 border-black p-4">
-          <p>City: {address}</p>
+          <p>City: {city}</p>
           <p>Email: {email}</p>
           <p>Phone: {phoneNumber}</p>
         </div>
@@ -42,4 +44,4 @@ class GeneralInfo extends Component {
   }
 }
 
-export default GeneralInfo;
+export default GeneralInfoDisplay;
