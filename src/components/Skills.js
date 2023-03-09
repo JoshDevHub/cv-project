@@ -46,13 +46,19 @@ class Skills extends Component {
     });
   };
 
+  closeForm = () => {
+    this.setState({
+      showForm: false,
+    });
+  };
+
   skillList() {
     if (this.state.skills.length === 0) {
-      return <p>You haven't added any skills yet</p>;
+      return <p className="mb-4">You haven't added any skills yet</p>;
     }
 
     return (
-      <ul className="flex flex-wrap gap-4">
+      <ul className="mb-4 flex flex-wrap gap-4">
         {this.state.skills.map((skill) => {
           return (
             <li
@@ -76,6 +82,7 @@ class Skills extends Component {
           <SkillForm
             handleSubmit={this.addSkill}
             handleChange={this.handleChange}
+            handleClose={this.closeForm}
             skill={this.state.skill}
           />
         ) : (
