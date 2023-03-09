@@ -47,11 +47,14 @@ class WorkForm extends Component {
         </div>
         <div className="col-span-3 mb-2 flex flex-col">
           <label htmlFor="responsibilities">Responsibilities</label>
-          <Input
-            type="text"
+          <textarea
             id="responsibilities"
+            name="responsibilities"
             value={responsibilities}
-            handler={this.props.handleChange}
+            onChange={this.props.handleChange}
+            placeholder="List some of your responsibilities ..."
+            className="rounded-md border px-2 py-1"
+            rows="5"
           />
         </div>
         <div className="flex gap-4">
