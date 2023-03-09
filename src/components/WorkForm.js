@@ -9,8 +9,11 @@ class WorkForm extends Component {
       this.props.experience;
 
     return (
-      <form onSubmit={this.props.handleSubmit}>
-        <div>
+      <form
+        onSubmit={this.props.handleSubmit}
+        className="grid grid-cols-3 gap-y-2 gap-x-8"
+      >
+        <div className="col-span-2 flex flex-col gap-0.5">
           <label htmlFor="compnayName">Company Name</label>
           <Input
             type="text"
@@ -18,7 +21,7 @@ class WorkForm extends Component {
             value={companyName}
             handler={this.props.handleChange}
           />
-          <label htmlFor="jobTitle">Job Title</label>
+          <label htmlFor="jobTitle col-span-2">Job Title</label>
           <Input
             type="text"
             id="jobTitle"
@@ -26,7 +29,7 @@ class WorkForm extends Component {
             handler={this.props.handleChange}
           />
         </div>
-        <div>
+        <div className="flex flex-col gap-0.5">
           <label htmlFor="startDate">Start Date</label>
           <Input
             type="text"
@@ -42,7 +45,7 @@ class WorkForm extends Component {
             handler={this.props.handleChange}
           />
         </div>
-        <div>
+        <div className="col-span-3 mb-2 flex flex-col">
           <label htmlFor="responsibilities">Responsibilities</label>
           <Input
             type="text"
