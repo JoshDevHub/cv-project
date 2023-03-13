@@ -4,46 +4,31 @@ import Button from "./Button";
 import Input from "./Input";
 
 class GeneralInfoForm extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      ...this.props.info,
-    };
-  }
-
-  handleChange = (event) => {
-    const { id, value } = event.target;
-    this.setState({
-      [id]: value,
-    });
-  };
-
   render() {
+    const { handleChange, handleSubmit, info } = this.props;
+    const { name, jobTitle, phoneNumber, email, city } = info;
+
     return (
       <div className="flex flex-col items-center">
         <h2 className="mb-2 text-2xl font-bold">Edit Info</h2>
-        <form
-          onSubmit={this.props.handleSubmit}
-          className="mx-4 flex flex-col gap-4"
-        >
+        <form onSubmit={handleSubmit} className="mx-4 flex flex-col gap-4">
           <div className="flex flex-wrap gap-8">
             <div className="flex flex-col">
               <label htmlFor="name">Name</label>
               <Input
                 type="text"
-                value={this.state.name}
+                value={name}
                 id="name"
-                handler={this.handleChange}
+                handler={handleChange}
               />
             </div>
             <div className="flex flex-col">
               <label htmlFor="jobTitle">Title</label>
               <Input
                 type="text"
-                value={this.state.jobTitle}
+                value={jobTitle}
                 id="jobTitle"
-                handler={this.handleChange}
+                handler={handleChange}
               />
             </div>
           </div>
@@ -53,27 +38,27 @@ class GeneralInfoForm extends Component {
               <label htmlFor="phoneNumber">Phone Number</label>
               <Input
                 type="text"
-                value={this.state.phoneNumber}
+                value={phoneNumber}
                 id="phoneNumber"
-                handler={this.handleChange}
+                handler={handleChange}
               />
             </div>
             <div className="flex flex-col">
               <label htmlFor="email">Email</label>
               <Input
                 type="email"
-                value={this.state.email}
+                value={email}
                 id="email"
-                handler={this.handleChange}
+                handler={handleChange}
               />
             </div>
             <div className="flex flex-col">
               <label htmlFor="city">City</label>
               <Input
                 type="text"
-                value={this.state.city}
+                value={city}
                 id="city"
-                handler={this.handleChange}
+                handler={handleChange}
               />
             </div>
           </div>

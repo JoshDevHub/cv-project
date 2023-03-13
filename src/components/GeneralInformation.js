@@ -30,12 +30,19 @@ class GeneralInformation extends Component {
   submitInfo = (event) => {
     event.preventDefault();
 
-    const data = objFromForm(event.target);
+    this.setState({
+      showForm: false,
+    });
+  };
+
+  handleChange = (event) => {
+    const { name, value } = event.target;
+
     this.setState({
       info: {
-        ...data,
+        ...this.state.info,
+        [name]: value,
       },
-      showForm: false,
     });
   };
 
@@ -45,6 +52,7 @@ class GeneralInformation extends Component {
         <GeneralInfoForm
           info={this.state.info}
           handleSubmit={this.submitInfo}
+          handleChange={this.handleChange}
         />
       );
     }
