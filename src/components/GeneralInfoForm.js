@@ -6,10 +6,10 @@ import Input from "./Input";
 class GeneralInfoForm extends Component {
   render() {
     const { handleChange, handleSubmit, info } = this.props;
-    const { name, jobTitle, phoneNumber, email, city } = info;
+    const { name, jobTitle, description, phoneNumber, email, city } = info;
 
     return (
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center px-8 py-4">
         <h2 className="mb-2 text-2xl font-bold">Edit Info</h2>
         <form onSubmit={handleSubmit} className="mx-4 flex flex-col gap-4">
           <div className="flex flex-wrap gap-8">
@@ -32,7 +32,18 @@ class GeneralInfoForm extends Component {
               />
             </div>
           </div>
-          <div></div>
+          <div className="flex flex-col">
+            <label htmlFor="description">Description</label>
+            <textarea
+              onChange={handleChange}
+              value={description}
+              id="description"
+              name="description"
+              placeholder="Give a short description of yourself"
+              className="rounded-md border px-2 py-1"
+              rows="4"
+            />
+          </div>
           <div className="mb-4 flex gap-4">
             <div className="flex flex-col">
               <label htmlFor="phoneNumber">Phone Number</label>

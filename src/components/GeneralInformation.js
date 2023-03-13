@@ -3,8 +3,6 @@ import React, { Component } from "react";
 import GeneralInfoDisplay from "./GeneralInfoDisplay";
 import GeneralInfoForm from "./GeneralInfoForm";
 
-import { objFromForm } from "../utils/object_helpers";
-
 class GeneralInformation extends Component {
   constructor(props) {
     super(props);
@@ -13,6 +11,7 @@ class GeneralInformation extends Component {
       info: {
         name: "",
         jobTitle: "",
+        description: "",
         email: "",
         city: "",
         phoneNumber: "",
