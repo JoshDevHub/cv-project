@@ -7,7 +7,7 @@ const STYLES_MAP = new Map([
 
 class Button extends Component {
   render() {
-    const { type, text, handler, value, styles } = this.props;
+    const { type, handler, value, styles } = this.props;
     const colors = STYLES_MAP.get(styles || "primary");
 
     return (
@@ -19,7 +19,7 @@ class Button extends Component {
         className={`rounded-md border-2 p-1 font-bold text-white transition
                    hover:bg-transparent ${colors}`}
       >
-        {text}
+        {this.props.text ?? this.props.child}
       </button>
     );
   }

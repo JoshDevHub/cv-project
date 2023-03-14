@@ -44,6 +44,14 @@ class Education extends Component {
     });
   };
 
+  handleRemove = (id) => {
+    return () => {
+      this.setState({
+        experiences: this.state.experiences.filter((exp) => exp.id !== id),
+      });
+    };
+  };
+
   handleSubmit = (event) => {
     event.preventDefault();
 
@@ -62,7 +70,13 @@ class Education extends Component {
     return (
       <ul>
         {this.state.experiences.map(({ id, ...experience }) => {
-          return <EducationItem key={id} data={experience} />;
+          return (
+            <EducationItem
+              key={id}
+              data={experience}
+              removeHandler={this.handleRemove(id)}
+            />
+          );
         })}
       </ul>
     );
