@@ -6,7 +6,6 @@ import Input from "./Input";
 class GeneralInfoForm extends Component {
   render() {
     const { handleChange, handleSubmit, info } = this.props;
-    const { name, jobTitle, description, phoneNumber, email, city } = info;
 
     return (
       <div className="flex flex-col items-center px-8 py-4">
@@ -17,7 +16,7 @@ class GeneralInfoForm extends Component {
               <label htmlFor="name">Name</label>
               <Input
                 type="text"
-                value={name}
+                value={info.name}
                 id="name"
                 handler={handleChange}
               />
@@ -26,7 +25,7 @@ class GeneralInfoForm extends Component {
               <label htmlFor="jobTitle">Title</label>
               <Input
                 type="text"
-                value={jobTitle}
+                value={info.jobTitle}
                 id="jobTitle"
                 handler={handleChange}
               />
@@ -36,7 +35,7 @@ class GeneralInfoForm extends Component {
             <label htmlFor="description">Description</label>
             <textarea
               onChange={handleChange}
-              value={description}
+              value={info.description}
               id="description"
               name="description"
               placeholder="Give a short description of yourself"
@@ -49,7 +48,7 @@ class GeneralInfoForm extends Component {
               <label htmlFor="phoneNumber">Phone Number</label>
               <Input
                 type="text"
-                value={phoneNumber}
+                value={info.phoneNumber}
                 id="phoneNumber"
                 handler={handleChange}
               />
@@ -58,7 +57,7 @@ class GeneralInfoForm extends Component {
               <label htmlFor="email">Email</label>
               <Input
                 type="email"
-                value={email}
+                value={info.email}
                 id="email"
                 handler={handleChange}
               />
@@ -67,8 +66,37 @@ class GeneralInfoForm extends Component {
               <label htmlFor="city">City</label>
               <Input
                 type="text"
-                value={city}
+                value={info.city}
                 id="city"
+                handler={handleChange}
+              />
+            </div>
+          </div>
+          <div className="mb-4 flex gap-4">
+            <div className="flex flex-col">
+              <label htmlFor="linkedin">LinkedIn</label>
+              <Input
+                type="text"
+                value={info.linkedin}
+                id="linkedin"
+                handler={handleChange}
+              />
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="website">Website</label>
+              <Input
+                type="text"
+                value={info.website}
+                id="website"
+                handler={handleChange}
+              />
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="github">GitHub</label>
+              <Input
+                type="text"
+                value={info.github}
+                id="github"
                 handler={handleChange}
               />
             </div>

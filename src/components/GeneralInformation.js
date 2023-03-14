@@ -15,6 +15,9 @@ class GeneralInformation extends Component {
         email: "",
         city: "",
         phoneNumber: "",
+        website: "",
+        linkedin: "",
+        github: "",
       },
       showForm: false,
     };

@@ -1,7 +1,11 @@
 import React, { Component } from "react";
+
 import { ReactComponent as EmailIcon } from "../assets/icons/email.svg";
+import { ReactComponent as GitHubIcon } from "../assets/icons/github.svg";
+import { ReactComponent as LinkedInIcon } from "../assets/icons/linkedin.svg";
 import { ReactComponent as LocationIcon } from "../assets/icons/map-marker.svg";
 import { ReactComponent as PhoneIcon } from "../assets/icons/cellphone.svg";
+import { ReactComponent as WebsiteIcon } from "../assets/icons/web-box.svg";
 
 import Button from "./Button";
 
@@ -26,8 +30,17 @@ class GeneralInfoDisplay extends Component {
       );
     }
 
-    const { name, city, description, email, phoneNumber, jobTitle } =
-      this.props.info;
+    const {
+      name,
+      city,
+      description,
+      email,
+      phoneNumber,
+      jobTitle,
+      linkedin,
+      website,
+      github,
+    } = this.props.info;
 
     return (
       <div>
@@ -53,6 +66,18 @@ class GeneralInfoDisplay extends Component {
           <div className="flex gap-2">
             <PhoneIcon className="w-6 text-sky-800" />
             <p>{phoneNumber}</p>
+          </div>
+          <div className="flex gap-2">
+            <LinkedInIcon className="w-6 text-sky-800" />
+            <p>{linkedin}</p>
+          </div>
+          <div className="flex gap-2">
+            <WebsiteIcon className="w-6 text-sky-800" />
+            <p>{website}</p>
+          </div>
+          <div className="flex gap-2">
+            <GitHubIcon className="w-6 text-sky-800" />
+            <p>{github}</p>
           </div>
         </div>
       </div>
