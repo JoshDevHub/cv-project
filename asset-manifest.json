@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/cv-project/static/css/main.896d7589.css",
+    "main.js": "/cv-project/static/js/main.4d0b5b38.js",
+    "static/media/web-box.svg": "/cv-project/static/media/web-box.6e030a9f4eb817f915b44e647dca4aa3.svg",
+    "static/media/github.svg": "/cv-project/static/media/github.d80b9744249de4c95284fd399102b5e1.svg",
+    "index.html": "/cv-project/index.html",
+    "static/media/linkedin.svg": "/cv-project/static/media/linkedin.058744c8e6163e6c3911911e887e5593.svg",
+    "static/media/map-marker.svg": "/cv-project/static/media/map-marker.13fcdc0023ece5e2453683cd9f1d1425.svg",
+    "static/media/email.svg": "/cv-project/static/media/email.dbb2a9e9394189b740423f4114521e83.svg",
+    "static/media/delete-outline.svg": "/cv-project/static/media/delete-outline.3080a3ff7904fe3d4e6a701623eeea84.svg",
+    "static/media/cellphone.svg": "/cv-project/static/media/cellphone.bf839e8f197310563bf703733720117e.svg",
+    "main.896d7589.css.map": "/cv-project/static/css/main.896d7589.css.map",
+    "main.4d0b5b38.js.map": "/cv-project/static/js/main.4d0b5b38.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.896d7589.css",
+    "static/js/main.4d0b5b38.js"
+  ]
+}
