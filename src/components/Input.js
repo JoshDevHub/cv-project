@@ -1,20 +1,18 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Input extends Component {
-  render() {
-    const { type, handler, id, value } = this.props;
+const Input = (props) => {
+  const { type, handler, id, value } = props;
 
-    return (
-      <input
-        type={type}
-        value={value}
-        name={id}
-        id={id}
-        onChange={handler}
-        className="rounded-md border px-2 py-1"
-      />
-    );
-  }
-}
+  return (
+    <input
+      type={type}
+      value={value}
+      name={id}
+      id={id}
+      onChange={handler}
+      className="rounded-md border px-2 py-1"
+    />
+  );
+};
 
 export default Input;
