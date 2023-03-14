@@ -54,7 +54,7 @@ class GeneralInfoDisplay extends Component {
             text="Edit Info"
           />
         </div>
-        <div className="border-b-2 border-black px-8 py-4">
+        <div className="grid grid-cols-2 border-b-2 border-black px-12 py-4">
           <div className="flex gap-2">
             <LocationIcon className="w-6 text-sky-800" />
             <p>{city}</p>
