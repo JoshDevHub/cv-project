@@ -44,6 +44,14 @@ class WorkExperience extends Component {
     });
   };
 
+  handleRemove = (id) => {
+    return () => {
+      this.setState({
+        experiences: this.state.experiences.filter((exp) => exp.id !== id),
+      });
+    };
+  };
+
   handleSubmit = (event) => {
     event.preventDefault();
 
@@ -62,7 +70,13 @@ class WorkExperience extends Component {
     return (
       <ul>
         {this.state.experiences.map(({ id, ...experience }) => {
-          return <Work key={id} data={experience} />;
+          return (
+            <Work
+              key={id}
+              data={experience}
+              removeHandler={this.handleRemove(id)}
+            />
+          );
         })}
       </ul>
     );
