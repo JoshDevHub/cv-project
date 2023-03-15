@@ -1,68 +1,59 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
 import GeneralInfoDisplay from "./GeneralInfoDisplay";
 import GeneralInfoForm from "./GeneralInfoForm";
 
-class GeneralInformation extends Component {
-  constructor(props) {
-    super(props);
+const EmptyInformation = () => {
+  const keys = [
+    "name",
+    "jobTitle",
+    "description",
+    "email",
+    "city",
+    "phoneNumber",
+    "website",
+    "linkedin",
+    "github",
+  ];
 
-    this.state = {
-      info: {
-        name: "",
-        jobTitle: "",
-        description: "",
-        email: "",
-        city: "",
-        phoneNumber: "",
-        website: "",
-        linkedin: "",
-        github: "",
-      },
-      showForm: false,
-    };
-  }
+  return keys.reduce((obj, key) => {
+    obj[key] = "";
+    return obj;
+  }, {});
+};
 
-  showForm = () => {
-    this.setState({
-      showForm: true,
-    });
-  };
+const GeneralInformation = () => {
+  const [info, setInfo] = useState(EmptyInformation());
+  const [showForm, setShowForm] = useState(false);
 
-  submitInfo = (event) => {
+  const toggleForm = () => setShowForm(true);
+
+  const submitInfo = (event) => {
     event.preventDefault();
 
-    this.setState({
-      showForm: false,
-    });
+    setShowForm(false);
   };
 
-  handleChange = (event) => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
 
-    this.setState({
-      info: {
-        ...this.state.info,
-        [name]: value,
-      },
+    setInfo({
+      ...info,
+      [name]: value,
     });
   };
 
-  render() {
-    if (this.state.showForm) {
-      return (
-        <GeneralInfoForm
-          info={this.state.info}
-          handleSubmit={this.submitInfo}
-          handleChange={this.handleChange}
-        />
-      );
-    }
-
+  if (showForm) {
     return (
-      <GeneralInfoDisplay info={this.state.info} clickHandler={this.showForm} />
+      <GeneralInfoForm
+        info={info}
+        handleSubmit={submitInfo}
+        handleChange={handleChange}
+      />
     );
   }
-}
+
+  return <GeneralInfoDisplay info={info} clickHandler={toggleForm} />;
+};
 
 export default GeneralInformation;
