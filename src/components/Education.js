@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
 import Button from "./Button";
 import EducationForm from "./EducationForm";
@@ -17,89 +17,72 @@ const EmptyEducationItem = () => {
   };
 };
 
-class Education extends Component {
-  constructor(props) {
-    super(props);
+const Education = () => {
+  const [experiences, setExperiences] = useState([]);
+  const [eduItem, setEduItem] = useState(EmptyEducationItem());
+  const [showForm, setShowForm] = useState(false);
 
-    this.state = {
-      experiences: [],
-      education: EmptyEducationItem(),
-      showForm: false,
-    };
-  }
+  const toggleForm = () => setShowForm(!showForm);
 
-  toggleForm = () => {
-    this.setState({
-      showForm: !this.state.showForm,
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setEduItem({
+      ...eduItem,
+      [name]: value,
     });
   };
 
-  handleChange = (event) => {
-    const prop = event.target.id;
-    this.setState({
-      education: {
-        ...this.state.education,
-        [prop]: event.target.value,
-      },
-    });
-  };
-
-  handleRemove = (id) => {
+  const handleRemove = (id) => {
     return () => {
-      this.setState({
-        experiences: this.state.experiences.filter((exp) => exp.id !== id),
-      });
+      setExperiences(experiences.filter((exp) => exp.id !== id));
     };
   };
 
-  handleSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
 
-    this.setState({
-      experiences: [...this.state.experiences, this.state.education],
-      education: EmptyEducationItem(),
-      showForm: false,
-    });
+    setExperiences([...experiences, eduItem]);
+    setEduItem(EmptyEducationItem());
+    setShowForm(false);
   };
 
-  listExperiences() {
-    if (this.state.experiences.length === 0) {
+  const listExperiences = () => {
+    if (experiences.length === 0) {
       return <p className="mb-4">You haven't added any education yet</p>;
     }
 
     return (
       <ul>
-        {this.state.experiences.map(({ id, ...experience }) => {
+        {experiences.map(({ id, ...experience }) => {
           return (
             <EducationItem
               key={id}
               data={experience}
-              removeHandler={this.handleRemove(id)}
+              removeHandler={handleRemove(id)}
             />
           );
         })}
       </ul>
     );
-  }
+  };
 
-  render() {
-    return (
-      <div className="px-8 py-4">
-        <h2 className="mb-4 text-2xl font-bold text-sky-800">Education</h2>
-        {this.listExperiences()}
-        {this.state.showForm ? (
-          <EducationForm
-            education={this.state.education}
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
-            closeForm={this.toggleForm}
-          />
-        ) : (
-          <Button type="button" text="Add Work" handler={this.toggleForm} />
-        )}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="px-8 py-4">
+      <h2 className="mb-4 text-2xl font-bold text-sky-800">Education</h2>
+      {listExperiences()}
+      {showForm ? (
+        <EducationForm
+          education={eduItem}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          closeForm={toggleForm}
+        />
+      ) : (
+        <Button type="button" text="Add Work" handler={toggleForm} />
+      )}
+    </div>
+  );
+};
 
 export default Education;
