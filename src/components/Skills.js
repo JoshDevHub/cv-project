@@ -1,96 +1,48 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
 import SkillForm from "./SkillForm";
 import Button from "./Button";
 
-import uniqid from "uniqid";
+const Skills = () => {
+  const [skills, setSkills] = useState([]);
+  const [showForm, setShowForm] = useState(false);
 
-class Skills extends Component {
-  constructor(props) {
-    super(props);
+  const createSkill = (skill) => setSkills([...skills, skill]);
 
-    this.state = {
-      skills: [],
-      skill: {
-        id: uniqid(),
-        text: "",
-      },
-      showForm: false,
-    };
-  }
+  const toggleForm = () => setShowForm(!showForm);
 
-  addSkill = (event) => {
-    event.preventDefault();
-
-    this.setState({
-      skills: [...this.state.skills, this.state.skill],
-      skill: {
-        id: uniqid(),
-        text: "",
-      },
-    });
-  };
-
-  handleChange = (event) => {
-    this.setState({
-      skill: {
-        id: this.state.skill.id,
-        text: event.target.value,
-      },
-    });
-  };
-
-  openForm = () => {
-    this.setState({
-      showForm: true,
-    });
-  };
-
-  closeForm = () => {
-    this.setState({
-      showForm: false,
-    });
-  };
-
-  skillList() {
-    if (this.state.skills.length === 0) {
+  const skillList = () => {
+    if (skills.length === 0) {
       return <p className="mb-4">You haven't added any skills yet</p>;
     }
 
     return (
       <ul className="mb-4 flex flex-wrap gap-4">
-        {this.state.skills.map((skill) => {
+        {skills.map((s) => {
           return (
             <li
-              key={skill.id}
+              key={s.id}
               className="rounded-md bg-sky-800 px-2 py-1 text-white"
             >
-              {skill.text}
+              {s.text}
             </li>
           );
         })}
       </ul>
     );
-  }
+  };
 
-  render() {
-    return (
-      <div className="px-8 py-4">
-        <h2 className="mb-4 text-2xl font-bold text-sky-800">Skills</h2>
-        {this.skillList()}
-        {this.state.showForm ? (
-          <SkillForm
-            handleSubmit={this.addSkill}
-            handleChange={this.handleChange}
-            handleClose={this.closeForm}
-            skill={this.state.skill}
-          />
-        ) : (
-          <Button handler={this.openForm} text="Add Skills" type="button" />
-        )}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="px-8 py-4">
+      <h2 className="mb-4 text-2xl font-bold text-sky-800">Skills</h2>
+      {skillList()}
+      {showForm ? (
+        <SkillForm createSkill={createSkill} handleClose={toggleForm} />
+      ) : (
+        <Button handler={toggleForm} text="Add Skills" type="button" />
+      )}
+    </div>
+  );
+};
 
 export default Skills;

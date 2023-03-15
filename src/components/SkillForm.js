@@ -1,19 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
+import uniqid from "uniqid";
 
 import Button from "./Button";
 import Input from "./Input";
 
 const SkillForm = (props) => {
-  const { text } = props;
+  const [skill, setSkill] = useState({ id: uniqid(), text: "" });
+
+  const handleChange = (event) => {
+    setSkill({ id: skill.id, text: event.target.value });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    props.createSkill(skill);
+    setSkill({ id: uniqid(), text: "" });
+  };
 
   return (
-    <form onSubmit={props.handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <div className="mb-2">
         <label className="sr-only">Add Skill</label>
         <Input
           type="text"
-          handler={props.handleChange}
-          value={text}
+          handler={handleChange}
+          value={skill.text}
           id="skill"
         />
       </div>
