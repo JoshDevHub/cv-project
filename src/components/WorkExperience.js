@@ -4,32 +4,17 @@ import Button from "./Button";
 import Work from "./Work";
 import WorkForm from "./WorkForm";
 
-import uniqid from "uniqid";
-
-const EmptyWorkExperience = () => {
-  return {
-    id: uniqid(),
-    startDate: "",
-    endDate: "",
-    companyName: "",
-    jobTitle: "",
-    responsibilities: "",
-  };
-};
-
 const WorkExperience = () => {
   const [experiences, setExperiences] = useState([]);
-  const [workItem, setWorkItem] = useState(EmptyWorkExperience());
   const [showForm, setShowForm] = useState(false);
+  const [editItem, setEditItem] = useState(undefined);
 
   const toggleForm = () => setShowForm(!showForm);
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setWorkItem({
-      ...workItem,
-      [name]: value,
-    });
+  const editModeFor = (id) => {
+    return () => {
+      setEditItem(experiences.find((exp) => exp.id === id));
+    };
   };
 
   const handleRemove = (id) => {
@@ -38,12 +23,14 @@ const WorkExperience = () => {
     };
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    setExperiences([...experiences, workItem]);
-    setWorkItem(EmptyWorkExperience());
+  const createWork = (newItem) => {
+    setExperiences([...experiences, newItem]);
     setShowForm(false);
+  };
+
+  const updateWork = (item) => {
+    setExperiences(experiences.map((exp) => (exp.id === item.id ? item : exp)));
+    setEditItem(undefined);
   };
 
   const listExperiences = () => {
@@ -53,9 +40,25 @@ const WorkExperience = () => {
 
     return (
       <ul>
-        {experiences.map(({ id, ...experience }) => {
+        {experiences.map((exp) => {
+          if (editItem && editItem.id === exp.id) {
+            return (
+              <WorkForm
+                key={exp.id}
+                data={exp}
+                submitButton={<Button type="submit" text="Update" />}
+                submitAction={updateWork}
+                closeForm={() => setEditItem(undefined)}
+              />
+            );
+          }
           return (
-            <Work key={id} data={experience} removeHandler={handleRemove(id)} />
+            <Work
+              key={exp.id}
+              data={exp}
+              removeHandler={handleRemove(exp.id)}
+              editHandler={editModeFor(exp.id)}
+            />
           );
         })}
       </ul>
@@ -68,9 +71,8 @@ const WorkExperience = () => {
       {listExperiences()}
       {showForm ? (
         <WorkForm
-          experience={workItem}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
+          submitButton={<Button type="submit" text="Add Experience" />}
+          submitAction={createWork}
           closeForm={toggleForm}
         />
       ) : (
