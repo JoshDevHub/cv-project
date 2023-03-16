@@ -18,8 +18,7 @@ const EmptyWorkExperience = () => {
 
 const WorkForm = (props) => {
   const [workItem, setWorkItem] = useState(props.data ?? EmptyWorkExperience);
-  /* const { startDate, endDate, jobTitle, companyName, responsibilities } = */
-  /*   props.experience; */
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setWorkItem({
@@ -31,7 +30,6 @@ const WorkForm = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log(workItem);
     props.submitAction(workItem);
   };
 
@@ -82,7 +80,6 @@ const WorkForm = (props) => {
         />
       </div>
       <div className="flex gap-4">
-        {/* <Button type="submit" text="Add Experience" /> */}
         {props.submitButton}
         <Button
           type="button"
