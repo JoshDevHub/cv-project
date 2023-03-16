@@ -4,34 +4,11 @@ import Button from "./Button";
 import EducationForm from "./EducationForm";
 import EducationItem from "./EducationItem";
 
-import uniqid from "uniqid";
-
-const EmptyEducationItem = () => {
-  return {
-    id: uniqid(),
-    institution: "",
-    degree: "",
-    didGraduate: false,
-    startDate: "",
-    endDate: "",
-  };
-};
-
 const Education = () => {
   const [experiences, setExperiences] = useState([]);
-  const [eduItem, setEduItem] = useState(EmptyEducationItem());
   const [showForm, setShowForm] = useState(false);
 
   const toggleForm = () => setShowForm(!showForm);
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    setEduItem({
-      ...eduItem,
-      [name]: value,
-    });
-  };
 
   const handleRemove = (id) => {
     return () => {
@@ -39,11 +16,8 @@ const Education = () => {
     };
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    setExperiences([...experiences, eduItem]);
-    setEduItem(EmptyEducationItem());
+  const addEduItem = (item) => {
+    setExperiences([...experiences, item]);
     setShowForm(false);
   };
 
@@ -72,12 +46,7 @@ const Education = () => {
       <h2 className="mb-4 text-2xl font-bold text-sky-800">Education</h2>
       {listExperiences()}
       {showForm ? (
-        <EducationForm
-          education={eduItem}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-          closeForm={toggleForm}
-        />
+        <EducationForm submitAction={addEduItem} closeForm={toggleForm} />
       ) : (
         <Button type="button" text="Add Work" handler={toggleForm} />
       )}

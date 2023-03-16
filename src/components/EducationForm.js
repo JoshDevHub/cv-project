@@ -1,15 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Button from "./Button";
 import Input from "./Input";
 
+import uniqid from "uniqid";
+
+const EmptyEducationItem = () => {
+  return {
+    id: uniqid(),
+    institution: "",
+    degree: "",
+    didGraduate: false,
+    startDate: "",
+    endDate: "",
+  };
+};
+
 const EducationForm = (props) => {
-  const { startDate, endDate, degree, institution, didGraduate } =
-    props.education;
+  const [eduItem, setEduItem] = useState(EmptyEducationItem());
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setEduItem({
+      ...eduItem,
+      [name]: value,
+    })
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    props.submitAction(eduItem);
+  }
 
   return (
     <form
-      onSubmit={props.handleSubmit}
+      onSubmit={handleSubmit}
       className="grid grid-cols-3 gap-y-2 gap-x-8"
     >
       <div className="col-span-2 flex flex-col gap-0.5">
@@ -17,15 +43,15 @@ const EducationForm = (props) => {
         <Input
           type="text"
           id="institution"
-          value={institution}
-          handler={props.handleChange}
+          value={eduItem.institution}
+          handler={handleChange}
         />
         <label htmlFor="degree col-span-2">Degree</label>
         <Input
           type="text"
           id="degree"
-          value={degree}
-          handler={props.handleChange}
+          value={eduItem.degree}
+          handler={handleChange}
         />
       </div>
       <div className="flex flex-col gap-0.5">
@@ -33,15 +59,15 @@ const EducationForm = (props) => {
         <Input
           type="text"
           id="startDate"
-          value={startDate}
-          handler={props.handleChange}
+          value={eduItem.startDate}
+          handler={handleChange}
         />
         <label htmlFor="endDate">End Date</label>
         <Input
           type="text"
           id="endDate"
-          value={endDate}
-          handler={props.handleChange}
+          value={eduItem.endDate}
+          handler={handleChange}
         />
       </div>
       <div className="col-span-3 mb-2 flex gap-4">
@@ -49,8 +75,8 @@ const EducationForm = (props) => {
         <Input
           type="checkbox"
           id="didGraduate"
-          value={didGraduate}
-          handler={props.handleChange}
+          value={eduItem.didGraduate}
+          handler={handleChange}
         />
       </div>
       <div className="flex gap-4">
