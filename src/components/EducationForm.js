@@ -17,27 +17,24 @@ const EmptyEducationItem = () => {
 };
 
 const EducationForm = (props) => {
-  const [eduItem, setEduItem] = useState(EmptyEducationItem());
+  const [eduItem, setEduItem] = useState(props.data ?? EmptyEducationItem());
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setEduItem({
       ...eduItem,
       [name]: value,
-    })
-  }
+    });
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     props.submitAction(eduItem);
-  }
+  };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="grid grid-cols-3 gap-y-2 gap-x-8"
-    >
+    <form onSubmit={handleSubmit} className="grid grid-cols-3 gap-y-2 gap-x-8">
       <div className="col-span-2 flex flex-col gap-0.5">
         <label htmlFor="institution">Institution</label>
         <Input
@@ -80,7 +77,8 @@ const EducationForm = (props) => {
         />
       </div>
       <div className="flex gap-4">
-        <Button type="submit" text="Add Experience" />
+        {/* <Button type="submit" text="Add Experience" /> */}
+        {props.submitButton}
         <Button
           type="button"
           text="Cancel"
